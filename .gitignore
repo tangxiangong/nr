@@ -1,0 +1,7 @@
+.DS_Store
+.cache/
+bin/
+build/
+lib/
+compile_commands.json
+vcpkg_installed/
