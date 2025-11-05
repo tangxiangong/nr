@@ -124,7 +124,7 @@ Vector<T>::Vector(std::initializer_list<T> init)
     }
 }
 
-template <class T>
+template <typename T>
 Vector<T>& Vector<T>::operator=(const Vector<T>& rhs) {
     if (this != &rhs) {
         if (m_len != rhs.m_len) {
@@ -139,7 +139,7 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& rhs) {
     return *this;
 }
 
-template <class T>
+template <typename T>
 Vector<T>& Vector<T>::operator=(Vector<T>&& rhs) noexcept {
     if (this != &rhs) {
         m_data = std::move(rhs.m_data);
@@ -149,7 +149,7 @@ Vector<T>& Vector<T>::operator=(Vector<T>&& rhs) noexcept {
     return *this;
 }
 
-template <class T>
+template <typename T>
 T& Vector<T>::operator[](const size_t idx) {
     if (idx >= m_len) {
         throw std::out_of_range("Vector subscript out of bounds");
@@ -157,7 +157,7 @@ T& Vector<T>::operator[](const size_t idx) {
     return m_data[idx];
 }
 
-template <class T>
+template <typename T>
 const T& Vector<T>::operator[](const size_t idx) const {
     if (idx >= m_len) {
         throw std::out_of_range("Vector subscript out of bounds");
@@ -165,12 +165,12 @@ const T& Vector<T>::operator[](const size_t idx) const {
     return m_data[idx];
 }
 
-template <class T>
+template <typename T>
 size_t Vector<T>::size() const noexcept {
     return m_len;
 }
 
-template <class T>
+template <typename T>
 void Vector<T>::resize(size_t new_len) {
     if (new_len != m_len) {
         m_data.reset();
@@ -179,7 +179,7 @@ void Vector<T>::resize(size_t new_len) {
     }
 }
 
-template <class T>
+template <typename T>
 void Vector<T>::assign(size_t new_len, const T& a) {
     if (new_len != m_len) {
         m_data.reset();
@@ -306,12 +306,12 @@ Matrix<T>& Matrix<T>::operator=(Matrix<T>&& rhs) noexcept {
     return *this;
 }
 
-template <class T>
+template <typename T>
 size_t Matrix<T>::nrows() const noexcept {
     return m_rows;
 }
 
-template <class T>
+template <typename T>
 size_t Matrix<T>::ncols() const noexcept {
     return m_cols;
 }
@@ -332,7 +332,7 @@ const T& Matrix<T>::operator[](const size_t i, const size_t j) const {
     return m_data[i * m_cols + j];
 }
 
-template <class T>
+template <typename T>
 void Matrix<T>::resize(size_t new_rows, size_t new_cols) {
     if (new_rows != m_rows || new_cols != m_cols) {
         if (will_multiply_overflow(new_rows, new_cols))
@@ -345,7 +345,7 @@ void Matrix<T>::resize(size_t new_rows, size_t new_cols) {
     }
 }
 
-template <class T>
+template <typename T>
 void Matrix<T>::assign(size_t new_rows, size_t new_cols, const T& a) {
     if (new_rows != m_rows || new_cols != m_cols) {
         if (will_multiply_overflow(new_rows, new_cols))
