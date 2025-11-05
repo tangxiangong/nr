@@ -6,3 +6,4 @@ lib/
 compile_commands.json
 vcpkg_installed/
 .idea/
+.xmake/
